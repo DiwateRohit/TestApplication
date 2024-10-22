@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #alertMessage {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: none; /* Initially hide the alert */
+        }
+
+            #alertMessage.show {
+                opacity: 1;
+                display: block; /* Show the alert when the show class is added */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="form1">
+            <input type="hidden" id="hfShowAlert" />
+
+            <button id="btnSubmit" type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+
+            <div id="alertMessage" class="alert alert-success d-flex align-items-center" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <div>Subject Submitted Successfully!</div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function submitForm() {
+            // Simulate form submission logic
+            document.getElementById('hfShowAlert').value = 'true'; // Set to true to show the alert
+            showAlert();
+        }
+
+        function showAlert() {
+            var showAlert = document.getElementById('hfShowAlert').value;
+            if (showAlert === 'true') {
+                setTimeout(function () {
+                    var alertElement = document.getElementById('alertMessage');
+                    alertElement.classList.add('show');
+                }, 100); // Delay to ensure the element is rendered before applying the class
+            }
+        }
+
+        // Show alert based on hidden field value
+        document.addEventListener("DOMContentLoaded", function () {
+            showAlert();
+        });
+    </script>
+</body>
+</html>
